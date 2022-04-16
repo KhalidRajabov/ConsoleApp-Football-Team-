@@ -14,5 +14,16 @@ namespace Utilities.Helper
             Console.Write(message);
             Console.ResetColor();
         }
+
+     
+        public enum Menu
+        {
+            CreateAClub=1,
+            UpdateAClub,
+            RemoveAClub,
+            GetAllTheClubInfo,
+            SearchForAClub
+        }
+
     }
 }

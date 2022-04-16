@@ -44,7 +44,8 @@ namespace DataAccess.Repositories
             try
             {
                 
-                return DataContext.Clubs.FindAll(filter);
+                return filter==null? DataContext.Clubs: 
+                    DataContext.Clubs.FindAll(filter);
             }
             catch (Exception)
             {
@@ -66,6 +67,20 @@ namespace DataAccess.Repositories
                 throw;
             }
         }
+        public Clubs GetId(Predicate<Clubs> filter = null)
+        {
+            try
+            {
+                return filter == null ? DataContext.Clubs[0] :
+                    DataContext.Clubs.Find(filter);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
         public bool Update(Clubs entity)
         {

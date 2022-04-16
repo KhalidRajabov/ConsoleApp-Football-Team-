@@ -27,12 +27,17 @@ namespace BusinessLayer.Services
 
         public Clubs Delete(int id)
         {
-            throw new NotImplementedException();
+            Clubs isExist = _clubsRepository.GetId(g => g.Id == id);
+            if (isExist == null)
+            {
+                return null;
+            }
+            _clubsRepository.Delete(isExist);
+            return isExist;
         }
-
         public Clubs Get(string name)
         {
-            return _clubsRepository.GetOneByName();
+            return _clubsRepository.GetOneByName(g=>g.Name==name);
         }
 
         public Clubs Update(int id, Clubs clubs)
@@ -40,9 +45,14 @@ namespace BusinessLayer.Services
             throw new NotImplementedException();
         }
 
-        public List<Clubs> GetAll()
+        public List<Clubs> GetAll(string name=null)
         {
-            return _clubsRepository.GetAll();
+            return _clubsRepository.GetAll(g=>g.Name==name);
+        }
+
+        public Clubs GetId(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -61,6 +61,18 @@ namespace DataAccess.Repositories
                 throw;
             }
         }
+        public Players GetId(Predicate<Players> filter = null)
+        {
+            try
+            {
+                return filter == null ? DataContext.Players[0] : DataContext.Players.Find(filter);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         public bool Update(Players entity)
         {

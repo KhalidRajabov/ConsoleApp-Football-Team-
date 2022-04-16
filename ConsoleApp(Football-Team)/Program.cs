@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Services;
+using ConsoleApp_Football_Team_.Controller;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace ConsoleApp_Football_Team_
 
             while (true)
             {
-                ClubService clubService = new ClubService();
+                ClubController clubController = new ClubController();
                 Console.WriteLine("\n");
                 Extension.Print(ConsoleColor.DarkYellow, "1. Create a club\n" +
                     "2. Update a club\n" +
@@ -39,43 +40,21 @@ namespace ConsoleApp_Football_Team_
                 {
                     switch (input)
                     {
-                        case 1:
-                            Entername2:
-                            Extension.Print(ConsoleColor.DarkBlue, $"Enter your new club name: ");
-
-                            string name = Console.ReadLine();
-                            Extension.Print(ConsoleColor.DarkBlue, $"Enter the number of players in your club: ");
-                            string clubSize = Console.ReadLine();
-                            int size;
-                            bool isSize = int.TryParse(num, out size);
-                            if (isSize)
-                            {
-                                Clubs club = new Clubs
-                                {
-                                    Name = name,
-                                    MaxMemberSize = size
-                                };
-                                clubService.Create(club);
-                                Extension.Print(ConsoleColor.Yellow, $"Club {club.Name} created! \n" +
-                                    $"");
-                            }
-                            else
-                            {
-                                Extension.Print(ConsoleColor.Red, "You misspelled something... Try again!");
-                                goto Entername2;
-                            }
+                        case (int)Extension.Menu.CreateAClub:
+                           clubController.CreateClub();
                             break;
-                        case 2:
+                        case (int)Extension.Menu.UpdateAClub:
+                            Console.WriteLine("hello");
                             break;
-                        case 3:
+                        case (int)Extension.Menu.RemoveAClub:
+                            clubController.RemoveAClub();
                             break;
-                        case 4:
+                        case (int)Extension.Menu.GetAllTheClubInfo:
+                            clubController.GetAllClubs();
+                            
                             break;
-                        case 5:
-                            Extension.Print(ConsoleColor.Blue, "Enter a club name: ");
-                            string name2 = Console.ReadLine();
-                                Clubs list =  clubService.Get(name2);
-                                Extension.Print(ConsoleColor.Magenta, $"{list.Name}");
+                        case (int)Extension.Menu.SearchForAClub:
+                            clubController.SearchClub();
                             
                             break;
                         case 0:

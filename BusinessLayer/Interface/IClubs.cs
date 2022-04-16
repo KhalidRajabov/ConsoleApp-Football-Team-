@@ -13,6 +13,7 @@ namespace BusinessLayer.Interface
         Clubs Update (int id, Clubs clubs);
         Clubs Delete (int id);
         Clubs Get (string name);
-        List<Clubs> GetAll();
+        Clubs GetId (int id);
+        List<Clubs> GetAll(string name = null);
     }
 }
