@@ -40,15 +40,28 @@ namespace BusinessLayer.Services
             return _clubsRepository.GetOneByName(g=>g.Name==name);
         }
 
-        public Clubs Update(int id, Clubs clubs)
+        public Clubs Update(int id, string name)
         {
-            throw new NotImplementedException();
+             _clubsRepository.GetId(p => p.Id==id);
+            if (id== null)
+            {
+                return null;
+            }
+            name = _clubsRepository.GetOneByName()
+            return clubs;
         }
+
 
         public List<Clubs> GetAll(string name=null)
         {
             return _clubsRepository.GetAll(g=>g.Name==name);
         }
+        public List<Clubs> GetAllClubs()
+        {
+            return _clubsRepository.GetAll();
+        }
+
+
 
         public Clubs GetId(int id)
         {

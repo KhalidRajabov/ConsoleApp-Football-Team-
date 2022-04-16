@@ -86,7 +86,7 @@ namespace DataAccess.Repositories
         {
             try
             {
-                Clubs isExist = GetOneByName(s => s.Name == entity.Name);
+                Clubs isExist = GetOneByName(s => s.Id == entity.Id);
                 isExist = entity;
                 return true;
             }

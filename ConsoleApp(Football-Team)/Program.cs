@@ -19,7 +19,6 @@ namespace ConsoleApp_Football_Team_
             while (true)
             {
                 ClubController clubController = new ClubController();
-                Console.WriteLine("\n");
                 Extension.Print(ConsoleColor.DarkYellow, "1. Create a club\n" +
                     "2. Update a club\n" +
                     "3. Remove a club\n" +
@@ -42,7 +41,7 @@ namespace ConsoleApp_Football_Team_
                            clubController.CreateClub();
                             break;
                         case (int)Extension.Menu.UpdateAClub:
-                            Console.WriteLine("hello");
+                            clubController.Update();
                             break;
                         case (int)Extension.Menu.RemoveAClub:
                             clubController.RemoveAClub();
