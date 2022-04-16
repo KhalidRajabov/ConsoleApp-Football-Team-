@@ -9,12 +9,10 @@ namespace ConsoleApp_Football_Team_
 {
     internal class Program
     {
-        /*private static ClubService _clubService;
-        public Program()
-        {
-            _clubService = new ClubService();
+        //kamandalarin hamisini axtaran getall metodu mende ishlemir duzeltmek lazimdi,
+        //silinmish klubu axtaranda error olur, silende mesaj vermir
+        // error olan yeri fix et
 
-        }*/
         static void Main(string[] args)
         {
 

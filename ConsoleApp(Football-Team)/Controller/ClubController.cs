@@ -69,6 +69,11 @@ namespace ConsoleApp_Football_Team_.Controller
         }
         public void RemoveAClub()
         {
+            for (int i = 0; i < Clubs.Length; i++)
+            {
+
+            }
+            Console.WriteLine("Enter id of club to remove: ");
             int id = int.Parse(Console.ReadLine());
             
                 Extension.Print(ConsoleColor.Magenta, $"{clubService.Delete(id).Name}");
