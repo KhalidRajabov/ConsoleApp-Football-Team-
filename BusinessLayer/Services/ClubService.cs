@@ -40,14 +40,14 @@ namespace BusinessLayer.Services
             return _clubsRepository.GetOneByName(g=>g.Name==name);
         }
 
-        public Clubs Update(int id, string name)
+        public Clubs Update(int id, Clubs clubs)
         {
-             _clubsRepository.GetId(p => p.Id==id);
-            if (id== null)
+            clubs = _clubsRepository.GetOneByName(p => p.Id==id);
+            if (clubs== null)
             {
                 return null;
             }
-            name = _clubsRepository.GetOneByName()
+            _clubsRepository.Update(clubs);
             return clubs;
         }
 

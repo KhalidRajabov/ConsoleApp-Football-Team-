@@ -9,9 +9,7 @@ namespace ConsoleApp_Football_Team_
 {
     internal class Program
     {
-        //kamandalarin hamisini axtaran getall metodu mende ishlemir duzeltmek lazimdi,
-        //silinmish klubu axtaranda error olur, silende mesaj vermir
-        // error olan yeri fix et
+        //update ishlemir
 
         static void Main(string[] args)
         {

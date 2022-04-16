@@ -106,7 +106,7 @@ namespace ConsoleApp_Football_Team_.Controller
 
             int id = Convert.ToInt32(Console.ReadLine());
             
-            clubService.Update(id);
+            
 
         }
     }
