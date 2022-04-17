@@ -9,11 +9,11 @@ namespace BusinessLayer.Interface
 {
     public interface IPlayers
     {
-        Players Create(Players players);
-        Players Update(int id, Players players);
-        Players Delete(int id);
+        Players CreatePlayers(Players players);
+        Players UpdatePlayers(int id, Players players);
+        Players DeletePlayers(int id);
         Players Get(string name);
         Players GetId(int id);
-        List<Players> GetAll(string name = null);
+        List<Players> GetAllPlayers(string name = null);
     }
 }

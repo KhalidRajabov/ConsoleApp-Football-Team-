@@ -10,7 +10,7 @@ namespace BusinessLayer.Interface
     public interface IClubs
     {
         Clubs Create (Clubs club);
-        Clubs Update (int id, Clubs clubs);
+        Clubs Update (string name, Clubs clubs);
         Clubs Delete (int id);
         Clubs Get (string name);
         Clubs GetId (int id);

@@ -98,15 +98,22 @@ namespace ConsoleApp_Football_Team_.Controller
             Extension.Print(ConsoleColor.Cyan, "Teams available to be updated: ");
             foreach (var item in clubService.GetAllClubs())
             {
-                Extension.Print(ConsoleColor.Magenta, $"Club name: {item.Name} \n" +
+                Extension.Print(ConsoleColor.Magenta, $"Club name: \n" +
+                    $"{item.Name} \n" +
                     $"Club Id: {item.Id} \n" +
-                    $"");
+                    $"\n");
             }
-            Extension.Print(ConsoleColor.Cyan, "To update a club, write its Id number: ");
+            Extension.Print(ConsoleColor.Cyan, "To update a club, write its name: ");
 
-            int id = Convert.ToInt32(Console.ReadLine());
-            
-            
+            string oldName = Console.ReadLine();
+
+            Extension.Print(ConsoleColor.Cyan, "Write new name to the club: ");
+            string newName = Console.ReadLine();
+            Clubs updateclub = clubService.Get(oldName);
+            clubService.Update(newName, updateclub);
+            Extension.Print(ConsoleColor.Yellow, $"New name for the taem has been updated:    {updateclub.Name}  ");
+
+
 
         }
     }

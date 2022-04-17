@@ -33,6 +33,8 @@ namespace ConsoleApp_Football_Team_
                 bool isNum = int.TryParse(num, out input);
                 if (isNum && input>0&&input<7)
                 {
+
+
                     switch (input)
                     {
                         case (int)Extension.Menu.CreateAClub:
@@ -57,10 +59,6 @@ namespace ConsoleApp_Football_Team_
                         default:
                             break;
                     }
-                }
-                else
-                {
-                    //goto Entername;
                 }
             }
         }

@@ -50,7 +50,7 @@ namespace ConsoleApp_Football_Team_.Controller
                 case 2:
                     Extension.Print(ConsoleColor.Yellow, "Write a name");
                     string info = Console.ReadLine();
-                    foreach (var item in playerService.GetAll(info))
+                    foreach (var item in playerService.GetAllPlayers(info))
                     {
                         Extension.Print(ConsoleColor.Magenta, $"club    {item.Name}    exists.");
                     }
@@ -64,7 +64,7 @@ namespace ConsoleApp_Football_Team_.Controller
             Console.WriteLine("Enter id of club to remove: ");
             int id = int.Parse(Console.ReadLine());
 
-            Extension.Print(ConsoleColor.Magenta, $"CLUB {playerService.Delete(id).Name} DELETED \n" +
+            Extension.Print(ConsoleColor.Magenta, $"CLUB {playerService.DeletePlayers(id).Name} DELETED \n" +
                 $"Search to be sure it is deleted\n" +
                 $"");
         }
