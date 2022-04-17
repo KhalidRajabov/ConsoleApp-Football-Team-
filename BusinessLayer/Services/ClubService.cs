@@ -3,9 +3,6 @@ using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Services
 {
@@ -37,7 +34,7 @@ namespace BusinessLayer.Services
         }
         public Clubs Get(string name)
         {
-            return _clubsRepository.GetOneByName(g=>g.Name==name);
+            return _clubsRepository.GetOneByName(g => g.Name == name);
         }
 
         public Clubs Update(string name, Clubs clubs)
@@ -52,9 +49,9 @@ namespace BusinessLayer.Services
         }
 
 
-        public List<Clubs> GetAll(string name=null)
+        public List<Clubs> GetAll(string name = null)
         {
-            return _clubsRepository.GetAll(g=>g.Name==name);
+            return _clubsRepository.GetAll(g => g.Name == name);
         }
         public List<Clubs> GetAllClubs()
         {

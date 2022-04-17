@@ -14,6 +14,6 @@ namespace BusinessLayer.Interface
         Players DeletePlayers(int id);
         Players Get(string name);
         Players GetId(int id);
-        List<Players> GetAllPlayers(string name = null);
+        List<Players> GetAll(string name = null);
     }
 }

@@ -1,7 +1,10 @@
-﻿using BusinessLayer.Interface;
-using BusinessLayer.Services;
+﻿using BusinessLayer.Services;
 using Entities.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Utilities.Helper;
 
 namespace ConsoleApp_Football_Team_.Controller
@@ -15,22 +18,24 @@ namespace ConsoleApp_Football_Team_.Controller
         }
         public void Create()
         {
-        Entername2:
-            Extension.Print(ConsoleColor.DarkBlue, $"Enter player name: ");
+            Extension.Print(ConsoleColor.DarkGreen, $"Enter player name: ");
 
             string name = Console.ReadLine();
 
+            Extension.Print(ConsoleColor.DarkGreen, "Enter player shirt number");
+            int playernumber = Convert.ToInt32(Console.ReadLine());
             Players player = new Players
             {
                 Name = name,
+                ShirtNumber = playernumber,
             };
             playerService.CreatePlayers(player);
-            Extension.Print(ConsoleColor.Yellow, $"Club {player.Name} created! \n" +
+            Extension.Print(ConsoleColor.Yellow, $"Player {player.Name} with the number {playernumber} created! \n" +
                 $"");
         }
         public void GetAllPlayers()
         {
-            Extension.Print(ConsoleColor.Blue, "1. Get all clubs\n" +
+            Extension.Print(ConsoleColor.Blue, "1. Get all players\n" +
                 "2. Search by names: ");
             int ccll = Convert.ToInt32(Console.ReadLine());
 
@@ -38,21 +43,22 @@ namespace ConsoleApp_Football_Team_.Controller
             switch (ccll)
             {
                 case 1:
-                    Extension.Print(ConsoleColor.Cyan, "Current existing teams: \n" +
+                    Extension.Print(ConsoleColor.Cyan, "Current existing players: \n" +
                         "");
                     foreach (var item in playerService.GetAllPlayers())
                     {
-                        Extension.Print(ConsoleColor.Magenta, $"Club name: {item.Name} \n" +
-                            $"Club Id: {item.Id} \n" +
+                        Extension.Print(ConsoleColor.Magenta, $"Player name: {item.Name} \n" +
+                            $"Player number: {item.ShirtNumber} \n" +
+                            $"Player Id: {item.Id} \n" +
                             $"");
                     }
                     break;
                 case 2:
                     Extension.Print(ConsoleColor.Yellow, "Write a name");
                     string info = Console.ReadLine();
-                    foreach (var item in playerService.GetAllPlayers(info))
+                    foreach (var thing in playerService.GetAllPlayers())
                     {
-                        Extension.Print(ConsoleColor.Magenta, $"club    {item.Name}    exists.");
+                        Extension.Print(ConsoleColor.Magenta, $"Player    {thing.Name}    available.");
                     }
                     break;
                 default:
@@ -61,16 +67,16 @@ namespace ConsoleApp_Football_Team_.Controller
         }
         public void RemoveAPlayer()
         {
-            Console.WriteLine("Enter id of club to remove: ");
+            Console.WriteLine("Enter id of player to remove: ");
             int id = int.Parse(Console.ReadLine());
 
-            Extension.Print(ConsoleColor.Magenta, $"CLUB {playerService.DeletePlayers(id).Name} DELETED \n" +
+            Extension.Print(ConsoleColor.Magenta, $"PLAYER {playerService.DeletePlayers(id).Name} DELETED \n" +
                 $"Search to be sure it is deleted\n" +
                 $"");
         }
         public void SearchPlayer()
         {
-            Extension.Print(ConsoleColor.Blue, "Enter a club name: ");
+            Extension.Print(ConsoleColor.Blue, "Enter a player name: ");
             string name2 = Console.ReadLine();
             Players list = playerService.Get(name2);
             Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists");
@@ -90,7 +96,7 @@ namespace ConsoleApp_Football_Team_.Controller
 
             string oldName = Console.ReadLine();
 
-            Extension.Print(ConsoleColor.Cyan, "Write new name to the club: ");
+            Extension.Print(ConsoleColor.Cyan, "Write a new name to the player: ");
             string newName = Console.ReadLine();
             Players updateplayer = playerService.Get(oldName);
             playerService.UpdatePlayers(newName, updateplayer);

@@ -40,7 +40,9 @@ namespace DataAccess.Repositories
         {
             try
             {
-                return DataContext.Players.FindAll(filter);
+
+                return filter == null ? DataContext.Players :
+                    DataContext.Players.FindAll(filter);
             }
             catch (Exception)
             {

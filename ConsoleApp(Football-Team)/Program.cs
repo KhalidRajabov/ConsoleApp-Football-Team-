@@ -89,14 +89,10 @@ namespace ConsoleApp_Football_Team_
                                     playerController.UpdatePlayers();
                                     break;
                                 case (int)Extension.PlayerMenu.RemoveAPlayer:
-                                    clubController.RemoveAClub();
+                                    playerController.RemoveAPlayer();
                                     break;
                                 case (int)Extension.PlayerMenu.GetAllThePlayersInfo:
-                                    clubController.GetAllClubs();
-
-                                    break;
-                                case (int)Extension.PlayerMenu.SearchForAPlayer:
-                                    clubController.SearchClub();
+                                    playerController.GetAllPlayers();
 
                                     break;
                                 case 0:

@@ -51,8 +51,7 @@ namespace BusinessLayer.Services
             return players;
         }
 
-
-        public List<Players> GetAllPlayers(string name = null)
+        public List<Players> GetAll(string name = null)
         {
             return _playersRepository.GetAll(g => g.Name == name);
         }
@@ -60,6 +59,7 @@ namespace BusinessLayer.Services
         {
             return _playersRepository.GetAll();
         }
+        
 
 
 
