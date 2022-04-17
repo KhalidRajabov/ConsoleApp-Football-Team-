@@ -10,7 +10,7 @@ namespace BusinessLayer.Interface
     public interface IPlayers
     {
         Players CreatePlayers(Players players);
-        Players UpdatePlayers(int id, Players players);
+        Players UpdatePlayers(string name, Players players);
         Players DeletePlayers(int id);
         Players Get(string name);
         Players GetId(int id);

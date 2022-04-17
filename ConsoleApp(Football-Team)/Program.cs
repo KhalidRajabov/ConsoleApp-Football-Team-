@@ -14,6 +14,7 @@ namespace ConsoleApp_Football_Team_
         static void Main(string[] args)
         {
             ClubController clubController = new ClubController();
+            PlayerController playerController = new PlayerController();
 
 
         Entername: Extension.Print(ConsoleColor.Red, "Choose players menu or clubs menu: \n" +
@@ -43,8 +44,10 @@ namespace ConsoleApp_Football_Team_
                                                                      "");
                             Extension.Print(ConsoleColor.Magenta, "====================================(End of Menu)==================================== \n" +
                                 "");
-                            int newthing = Convert.ToInt32(Console.ReadLine());
-                            switch (newthing)
+                            int ofclub = Convert.ToInt32(Console.ReadLine());
+
+
+                            switch (ofclub)
                             {
                                 case (int)Extension.Menu.CreateAClub:
                                     clubController.CreateClub();
@@ -64,18 +67,44 @@ namespace ConsoleApp_Football_Team_
 
                                     break;
                                 case 0:
-                                    break;
-                                default:
-                                    break;
+                                    goto Entername;
                             }
                             break;
                         case 2:
+                            Extension.Print(ConsoleColor.Green, "1. Create a player\n" +
+                                                                    "2. Update a player\n" +
+                                                                    "3. Remove a player\n" +
+                                                                    "4. Get all the players info \n" +
+                                                                    "5. Search for a player\n" +
+                                                                    "");
+                            Extension.Print(ConsoleColor.Magenta, "====================================(End of Menu)==================================== \n" +
+                                "");
+                            int ofplayers = Convert.ToInt32(Console.ReadLine());
+                            switch (ofplayers)
+                            {
+                                case (int)Extension.PlayerMenu.CreateAPlayer:
+                                    playerController.Create();
+                                    break;
+                                case (int)Extension.PlayerMenu.UpdateAPlayer:
+                                    playerController.UpdatePlayers();
+                                    break;
+                                case (int)Extension.PlayerMenu.RemoveAPlayer:
+                                    clubController.RemoveAClub();
+                                    break;
+                                case (int)Extension.PlayerMenu.GetAllThePlayersInfo:
+                                    clubController.GetAllClubs();
+
+                                    break;
+                                case (int)Extension.PlayerMenu.SearchForAPlayer:
+                                    clubController.SearchClub();
+
+                                    break;
+                                case 0:
+                                    goto Entername;
+                            }
                             break;
                         case 0:
-                            Environment.Exit(0);
-                            break;
-                        default:
-                            break;
+                            goto Entername;
                     }
 
                 }

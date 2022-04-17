@@ -24,6 +24,14 @@ namespace Utilities.Helper
             GetAllTheClubInfo,
             SearchForAClub
         }
+        public enum PlayerMenu
+        {
+            CreateAPlayer = 1,
+            UpdateAPlayer,
+            RemoveAPlayer,
+            GetAllThePlayersInfo,
+            SearchForAPlayer
+        }
 
     }
 }
