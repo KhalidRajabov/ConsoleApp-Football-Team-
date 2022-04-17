@@ -16,6 +16,8 @@ namespace ConsoleApp_Football_Team_.Controller
         {
             playerService = new PlayerServices();
         }
+
+
         public void Create()
         {
             Extension.Print(ConsoleColor.DarkGreen, $"Enter player name: ");
@@ -33,6 +35,8 @@ namespace ConsoleApp_Football_Team_.Controller
             Extension.Print(ConsoleColor.Yellow, $"Player {player.Name} with the number {playernumber} created! \n" +
                 $"");
         }
+
+
         public void GetAllPlayers()
         {
             Extension.Print(ConsoleColor.Blue, "1. Get all players\n" +
@@ -40,9 +44,7 @@ namespace ConsoleApp_Football_Team_.Controller
             int ccll = Convert.ToInt32(Console.ReadLine());
 
 
-            switch (ccll)
-            {
-                case 1:
+           
                     Extension.Print(ConsoleColor.Cyan, "Current existing players: \n" +
                         "");
                     foreach (var item in playerService.GetAllPlayers())
@@ -52,18 +54,7 @@ namespace ConsoleApp_Football_Team_.Controller
                             $"Player Id: {item.Id} \n" +
                             $"");
                     }
-                    break;
-                case 2:
-                    Extension.Print(ConsoleColor.Yellow, "Write a name");
-                    string info = Console.ReadLine();
-                    foreach (var thing in playerService.GetAllPlayers())
-                    {
-                        Extension.Print(ConsoleColor.Magenta, $"Player    {thing.Name}    available.");
-                    }
-                    break;
-                default:
-                    break;
-            }
+                
         }
         public void RemoveAPlayer()
         {
@@ -79,12 +70,14 @@ namespace ConsoleApp_Football_Team_.Controller
             Extension.Print(ConsoleColor.Blue, "Enter a player name: ");
             string name2 = Console.ReadLine();
             Players list = playerService.Get(name2);
-            Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists");
+            Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists \n" +
+                $"");
         }
         public void UpdatePlayers()
         {
 
-            Extension.Print(ConsoleColor.Cyan, "Players available to be updated: ");
+            Extension.Print(ConsoleColor.Cyan, "Players available to be updated: \n" +
+                "");
             foreach (var item in playerService.GetAllPlayers())
             {
                 Extension.Print(ConsoleColor.Magenta, $"\n" +
@@ -100,10 +93,19 @@ namespace ConsoleApp_Football_Team_.Controller
             string newName = Console.ReadLine();
             Players updateplayer = playerService.Get(oldName);
             playerService.UpdatePlayers(newName, updateplayer);
-            Extension.Print(ConsoleColor.Yellow, $"New name for the taem has been updated:    {updateplayer.Name}  ");
+            Extension.Print(ConsoleColor.Yellow, $"New name for the taem has been updated:    {updateplayer.Name}  \n" +
+                $"");
 
 
 
+        }
+        public void SearchClub()
+        {
+            Extension.Print(ConsoleColor.Blue, "Enter a player name: ");
+            string name2 = Console.ReadLine();
+            Players list = playerService.Get(name2);
+            Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists \n" +
+                $"");
         }
     }
 

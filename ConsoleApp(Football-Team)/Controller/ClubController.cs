@@ -39,7 +39,8 @@ namespace ConsoleApp_Football_Team_.Controller
             }
             else
             {
-                Extension.Print(ConsoleColor.Red, "You misspelled something... Try again!");
+                Extension.Print(ConsoleColor.Red, "You misspelled something... Try again! \n" +
+                    "");
                 goto Entername2;
             }
         }
@@ -50,9 +51,7 @@ namespace ConsoleApp_Football_Team_.Controller
             int ccll = Convert.ToInt32(Console.ReadLine());
             
 
-            switch (ccll)
-            {
-                case 1:
+          
                     Extension.Print(ConsoleColor.Cyan, "Current existing teams: \n" +
                         "");
                     foreach (var item in clubService.GetAllClubs())
@@ -62,18 +61,7 @@ namespace ConsoleApp_Football_Team_.Controller
                             $"Club Id: {item.Id} \n" +
                             $"");
                     }
-                    break;
-                    case 2:
-                    Extension.Print(ConsoleColor.Yellow, "Write a name");
-                    string info = Console.ReadLine();
-                    foreach (var item in clubService.GetAll(info))
-                    {
-                        Extension.Print(ConsoleColor.Magenta, $"club    {item.Name}    exists.");
-                    }
-                    break;
-                default:
-                    break;
-            }
+                
         }
         public void RemoveAClub()
         {
@@ -90,12 +78,14 @@ namespace ConsoleApp_Football_Team_.Controller
             Extension.Print(ConsoleColor.Blue, "Enter a club name: ");
             string name2 = Console.ReadLine();
             Clubs list = clubService.Get(name2);
-            Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists");
+            Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists \n" +
+                $"");
         }
         public void Update()
         {
 
-            Extension.Print(ConsoleColor.Cyan, "Teams available to be updated: ");
+            Extension.Print(ConsoleColor.Cyan, "Teams available to be updated: \n" +
+                "");
             foreach (var item in clubService.GetAllClubs())
             {
                 Extension.Print(ConsoleColor.Magenta, $"Club name: \n" +
@@ -111,7 +101,8 @@ namespace ConsoleApp_Football_Team_.Controller
             string newName = Console.ReadLine();
             Clubs updateclub = clubService.Get(oldName);
             clubService.Update(newName, updateclub);
-            Extension.Print(ConsoleColor.Yellow, $"New name for the taem has been updated:    {updateclub.Name}  ");
+            Extension.Print(ConsoleColor.Yellow, $"New name for the taem has been updated:    {updateclub.Name}  \n" +
+                $"");
 
 
 
