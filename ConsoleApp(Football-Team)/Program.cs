@@ -4,15 +4,14 @@ using Entities.Models;
 using System;
 using System.Collections.Generic;
 using Utilities.Helper;
-
 namespace ConsoleApp_Football_Team_
 {
     internal class Program
     {
-        //update ishlemir
-
+        //must do
         static void Main(string[] args)
         {
+
             ClubController clubController = new ClubController();
             PlayerController playerController = new PlayerController();
 

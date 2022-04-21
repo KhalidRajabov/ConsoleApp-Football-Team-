@@ -48,7 +48,6 @@ namespace BusinessLayer.Services
             return clubs;
         }
 
-
         public List<Clubs> GetAll(string name = null)
         {
             return _clubsRepository.GetAll(g => g.Name == name);
