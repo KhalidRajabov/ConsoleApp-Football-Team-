@@ -32,19 +32,20 @@ namespace BusinessLayer.Services
             _clubsRepository.Delete(isExist);
             return isExist;
         }
-        public Clubs Get(string name)
+        public Clubs Get(int id)
         {
-            return _clubsRepository.GetOneByName(g => g.Name == name);
+            return _clubsRepository.GetOneByName(g => g.Id== id);
         }
 
         public Clubs Update(string name, Clubs clubs)
         {
-            clubs = _clubsRepository.GetOneByName(p => p.Name == name);
+            clubs = _clubsRepository.GetOneByName(p => p.Id == clubs.Id);
             if (clubs == null)
             {
                 return null;
             }
-            _clubsRepository.Update(clubs);
+           clubs.Name = name;
+           _clubsRepository.Update(clubs);
             return clubs;
         }
 

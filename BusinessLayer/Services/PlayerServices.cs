@@ -42,11 +42,12 @@ namespace BusinessLayer.Services
 
         public Players UpdatePlayers(string name, Players players)
         {
-            players = _playersRepository.GetOneByName(p => p.Name == name);
-            if (players== null)
+            players = _playersRepository.GetOneByName(p => p.Id == players.Id);
+            if (players == null)
             {
                 return null;
             }
+            players.Name = name;
             _playersRepository.Update(players);
             return players;
         }

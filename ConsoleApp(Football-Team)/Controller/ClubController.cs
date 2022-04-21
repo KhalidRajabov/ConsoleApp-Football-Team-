@@ -46,10 +46,6 @@ namespace ConsoleApp_Football_Team_.Controller
         }
         public void GetAllClubs()
         {
-            Extension.Print(ConsoleColor.Blue, "1. Get all clubs\n" +
-                "2. Search by names: ");
-            int ccll = Convert.ToInt32(Console.ReadLine());
-            
 
           
                     Extension.Print(ConsoleColor.Cyan, "Current existing teams: \n" +
@@ -65,6 +61,17 @@ namespace ConsoleApp_Football_Team_.Controller
         }
         public void RemoveAClub()
         {
+
+            Extension.Print(ConsoleColor.Cyan, "Current existing teams: \n" +
+                "");
+            foreach (var item in clubService.GetAllClubs())
+            {
+                Extension.Print(ConsoleColor.Magenta, $"Club name: {item.Name} \n" +
+                    $"Players: {item.MaxMemberSize} \n" +
+                    $"Club Id: {item.Id} \n" +
+                    $"");
+            }
+
             Console.WriteLine("Enter id of club to remove: ");
             int id = int.Parse(Console.ReadLine());
             
@@ -75,9 +82,9 @@ namespace ConsoleApp_Football_Team_.Controller
         }
         public void SearchClub()
         {
-            Extension.Print(ConsoleColor.Blue, "Enter a club name: ");
-            string name2 = Console.ReadLine();
-            Clubs list = clubService.Get(name2);
+            Extension.Print(ConsoleColor.Blue, "Enter id for a club : ");
+            int id=Convert.ToInt32(Console.ReadLine());
+            Clubs list = clubService.Get(id);
             Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists \n" +
                 $"");
         }
@@ -93,15 +100,15 @@ namespace ConsoleApp_Football_Team_.Controller
                     $"Club Id: {item.Id} \n" +
                     $"\n");
             }
-            Extension.Print(ConsoleColor.Cyan, "To update a club, write its name: ");
+            Extension.Print(ConsoleColor.Cyan, "To update a club, id: ");
 
-            string oldName = Console.ReadLine();
+            int oldName =Convert.ToInt32(Console.ReadLine());
 
             Extension.Print(ConsoleColor.Cyan, "Write new name to the club: ");
             string newName = Console.ReadLine();
             Clubs updateclub = clubService.Get(oldName);
             clubService.Update(newName, updateclub);
-            Extension.Print(ConsoleColor.Yellow, $"New name for the taem has been updated:    {updateclub.Name}  \n" +
+            Extension.Print(ConsoleColor.Yellow, $"New name for the taem has been updated:    {newName}  \n" +
                 $"");
 
 

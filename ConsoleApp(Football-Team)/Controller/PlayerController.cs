@@ -39,10 +39,6 @@ namespace ConsoleApp_Football_Team_.Controller
 
         public void GetAllPlayers()
         {
-            Extension.Print(ConsoleColor.Blue, "1. Get all players\n" +
-                "2. Search by names: ");
-            int ccll = Convert.ToInt32(Console.ReadLine());
-
 
            
                     Extension.Print(ConsoleColor.Cyan, "Current existing players: \n" +
@@ -58,6 +54,15 @@ namespace ConsoleApp_Football_Team_.Controller
         }
         public void RemoveAPlayer()
         {
+            Extension.Print(ConsoleColor.Cyan, "Current existing players: \n" +
+                       "");
+            foreach (var item in playerService.GetAllPlayers())
+            {
+                Extension.Print(ConsoleColor.Magenta, $"Player name: {item.Name} \n" +
+                    $"Player number: {item.ShirtNumber} \n" +
+                    $"Player Id: {item.Id} \n" +
+                    $"");
+            }
             Console.WriteLine("Enter id of player to remove: ");
             int id = int.Parse(Console.ReadLine());
 

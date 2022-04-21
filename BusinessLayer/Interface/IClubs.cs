@@ -12,7 +12,7 @@ namespace BusinessLayer.Interface
         Clubs Create (Clubs club);
         Clubs Update (string name, Clubs clubs);
         Clubs Delete (int id);
-        Clubs Get (string name);
+        Clubs Get (int id);
         Clubs GetId (int id);
         List<Clubs> GetAll(string name = null);
     }
