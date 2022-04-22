@@ -14,8 +14,14 @@ namespace Utilities.Helper
             Console.Write(message);
             Console.ResetColor();
         }
+        public static void Error()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Oops! Something went wrong...");
+            Console.ResetColor();
+        }
 
-     
+
         public enum Menu
         {
             CreateAClub=1,

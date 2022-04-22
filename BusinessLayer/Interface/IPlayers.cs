@@ -12,7 +12,7 @@ namespace BusinessLayer.Interface
         Players CreatePlayers(Players players);
         Players UpdatePlayers(string name, Players players);
         Players DeletePlayers(int id);
-        Players Get(string name);
+        Players Get(int id);
         Players GetId(int id);
         List<Players> GetAll(string name = null);
     }

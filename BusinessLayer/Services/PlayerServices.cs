@@ -35,9 +35,9 @@ namespace BusinessLayer.Services
             _playersRepository.Delete(isExist);
             return isExist;
         }
-        public Players Get(string name)
+        public Players Get(int id)
         {
-            return _playersRepository.GetOneByName(g => g.Name == name);
+            return _playersRepository.GetOneByName(g => g.Id== id);
         }
 
         public Players UpdatePlayers(string name, Players players)

@@ -20,20 +20,28 @@ namespace ConsoleApp_Football_Team_.Controller
 
         public void Create()
         {
-            Extension.Print(ConsoleColor.DarkGreen, $"Enter player name: ");
-
-            string name = Console.ReadLine();
-
-            Extension.Print(ConsoleColor.DarkGreen, "Enter player shirt number");
-            int playernumber = Convert.ToInt32(Console.ReadLine());
-            Players player = new Players
+            try
             {
-                Name = name,
-                ShirtNumber = playernumber,
-            };
-            playerService.CreatePlayers(player);
-            Extension.Print(ConsoleColor.Yellow, $"Player {player.Name} with the number {playernumber} created! \n" +
-                $"");
+                Extension.Print(ConsoleColor.DarkGreen, $"Enter player name: ");
+
+                string name = Console.ReadLine();
+
+                Extension.Print(ConsoleColor.DarkGreen, "Enter player shirt number");
+                int playernumber = Convert.ToInt32(Console.ReadLine());
+                Players player = new Players
+                {
+                    Name = name,
+                    ShirtNumber = playernumber,
+                };
+                playerService.CreatePlayers(player);
+                Extension.Print(ConsoleColor.Yellow, $"Player {player.Name} with the number {playernumber} created! \n" +
+                    $"");
+            }
+            catch (Exception)
+            {
+
+                Extension.Error();
+            }
         }
 
 
@@ -41,8 +49,6 @@ namespace ConsoleApp_Football_Team_.Controller
         {
 
            
-                    Extension.Print(ConsoleColor.Cyan, "Current existing players: \n" +
-                        "");
                     foreach (var item in playerService.GetAllPlayers())
                     {
                         Extension.Print(ConsoleColor.Magenta, $"Player name: {item.Name} \n" +
@@ -54,63 +60,65 @@ namespace ConsoleApp_Football_Team_.Controller
         }
         public void RemoveAPlayer()
         {
-            Extension.Print(ConsoleColor.Cyan, "Current existing players: \n" +
-                       "");
-            foreach (var item in playerService.GetAllPlayers())
+            try
             {
-                Extension.Print(ConsoleColor.Magenta, $"Player name: {item.Name} \n" +
-                    $"Player number: {item.ShirtNumber} \n" +
-                    $"Player Id: {item.Id} \n" +
+                Console.WriteLine("Enter id of club to remove: ");
+                int id = int.Parse(Console.ReadLine());
+
+                Extension.Print(ConsoleColor.Magenta, $"CLUB {playerService.DeletePlayers(id).Name} DELETED \n" +
+                    $"Search to be sure it is deleted\n" +
                     $"");
             }
-            Console.WriteLine("Enter id of player to remove: ");
-            int id = int.Parse(Console.ReadLine());
+            catch (Exception)
+            {
 
-            Extension.Print(ConsoleColor.Magenta, $"PLAYER {playerService.DeletePlayers(id).Name} DELETED \n" +
-                $"Search to be sure it is deleted\n" +
-                $"");
-        }
-        public void SearchPlayer()
-        {
-            Extension.Print(ConsoleColor.Blue, "Enter a player name: ");
-            string name2 = Console.ReadLine();
-            Players list = playerService.Get(name2);
-            Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists \n" +
-                $"");
+                Extension.Error();
+
+
+            }
         }
         public void UpdatePlayers()
         {
 
-            Extension.Print(ConsoleColor.Cyan, "Players available to be updated: \n" +
-                "");
-            foreach (var item in playerService.GetAllPlayers())
+
+         
+
+            try
             {
-                Extension.Print(ConsoleColor.Magenta, $"\n" +
-                    $"Player name: {item.Name} \n" +
-                    $"Player Id: {item.Id} \n" +
-                    $"\n");
+                Extension.Print(ConsoleColor.Cyan, "To update a player, id: ");
+
+                int oldName = Convert.ToInt32(Console.ReadLine());
+
+                Extension.Print(ConsoleColor.Cyan, "Write new name to the player: ");
+                string newName = Console.ReadLine();
+                Players updateclub = playerService.Get(oldName);
+                playerService.UpdatePlayers(newName, updateclub);
+                Extension.Print(ConsoleColor.Yellow, $"New name for the player has been updated:    {newName}  \n" +
+                    $"");
             }
-            Extension.Print(ConsoleColor.Cyan, "To update a player, write his name: ");
+            catch (Exception)
+            {
 
-            string oldName = Console.ReadLine();
-
-            Extension.Print(ConsoleColor.Cyan, "Write a new name to the player: ");
-            string newName = Console.ReadLine();
-            Players updateplayer = playerService.Get(oldName);
-            playerService.UpdatePlayers(newName, updateplayer);
-            Extension.Print(ConsoleColor.Yellow, $"New name for the taem has been updated:    {updateplayer.Name}  \n" +
-                $"");
-
-
+                Extension.Error();
+            }
 
         }
-        public void SearchClub()
+        public void SearchPlayers()
         {
-            Extension.Print(ConsoleColor.Blue, "Enter a player name: ");
-            string name2 = Console.ReadLine();
-            Players list = playerService.Get(name2);
-            Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists \n" +
-                $"");
+            try
+            {
+                Extension.Print(ConsoleColor.Blue, "Enter id for a players: ");
+                int id = Convert.ToInt32(Console.ReadLine());
+                Players list = playerService.Get(id);
+                Extension.Print(ConsoleColor.Magenta, $"Found! {list.Name} exists \n" +
+                    $"");
+            }
+            catch (Exception)
+            {
+
+
+                Extension.Error();
+            }
         }
     }
 
