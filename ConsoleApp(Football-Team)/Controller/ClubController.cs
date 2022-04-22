@@ -29,7 +29,7 @@ namespace ConsoleApp_Football_Team_.Controller
                     Clubs club = new Clubs
                     {
                         Name = name,
-                        MaxMemberSize = size
+                        Players = size
                     };
                     clubService.Create(club);
                     Extension.Print(ConsoleColor.Yellow, $"Club {club.Name} created! \n" +
@@ -53,7 +53,7 @@ namespace ConsoleApp_Football_Team_.Controller
             foreach (var item in clubService.GetAllClubs())
             {
                 Extension.Print(ConsoleColor.Magenta, $"Club name: {item.Name} \n" +
-                    $"Players: {item.MaxMemberSize} \n" +
+                    $"Players: {item.Players} \n" +
                     $"Club Id: {item.Id} \n" +
                     $"");
             }

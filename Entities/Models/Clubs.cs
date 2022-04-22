@@ -11,6 +11,6 @@ namespace Entities.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int MaxMemberSize { get; set; }
+        public int Players{ get; set; }
     }
 }
